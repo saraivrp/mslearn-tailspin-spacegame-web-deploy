@@ -26,10 +26,6 @@ stages:
       inputs:
         version: '$(dotnetSdkVersion)'
 
-    - task: NodeTool@0
-      inputs:
-        versionSpec: '14.x'
-
     - task: Npm@1
       displayName: 'Run npm install'
       inputs:
@@ -96,5 +92,5 @@ stages:
             displayName: 'Azure App Service Deploy: website'
             inputs:
               azureSubscription: 'Resource Manager - Tailspin - Space Game'
-              appName: $(WebAppNameDev)
+              appName: '$(WebAppNameDev)'
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
